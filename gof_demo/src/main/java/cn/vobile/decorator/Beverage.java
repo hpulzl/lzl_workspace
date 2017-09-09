@@ -14,7 +14,7 @@ public abstract class Beverage {
 
     String description;
     private double sizeCost = 0D;
-    private String sizeDescription;
+    private String sizeDescription = "";
 
     public void setSize(int size){
         if (size == small){
@@ -29,7 +29,7 @@ public abstract class Beverage {
         }
     }
 
-    public double getSize(){
+    public Double getSize(){
         return sizeCost;
     }
 

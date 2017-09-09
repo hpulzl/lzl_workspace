@@ -12,6 +12,6 @@ public class DarkRoast extends Beverage{
     }
 
     public Double cost() {
-        return 0.89;
+        return super.getSize() + 0.89;
     }
 }
