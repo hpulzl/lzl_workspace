@@ -1,6 +1,7 @@
 package cn.vobile.obserble.myObserble;
 
 
+
 /**
  * Created by lzl on 2017/9/7.
  * 新闻报纸的订阅者

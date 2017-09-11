@@ -4,7 +4,7 @@ package cn.vobile.obserble;
  * Hello world!
  *
  */
-public class App 
+public class App
 {
     public static void main( String[] args ) {
         PaperObservable paperObservable = new PaperObservable();

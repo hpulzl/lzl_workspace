@@ -7,7 +7,7 @@ package cn.vobile.obserble.myObserble;
 public class ObserverbleMain
 {
     public static void main( String[] args ) {
-        MyPaperObservable paperObservable = new MyPaperObservable();
+        MyPaperObservable paperObservable =  new MyPaperObservable();
         //更新今天的主题内容
         paperObservable.setTodayNews("2017-09-0909","lzl修复100+bug","程序员一天内努力修复100+bug");
         //添加订阅者
