@@ -32,7 +32,6 @@ public class ThreeInterruptThread{
         Thread.currentThread().interrupt();
         System.out.println(thread.getName() + "当前线程的状态--1："+thread.isInterrupted());
         System.out.println(thread.getName() + "当前线程的状态--2："+thread.isInterrupted());
-
     }
 
     /**
