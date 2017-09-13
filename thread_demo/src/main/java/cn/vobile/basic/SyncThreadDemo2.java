@@ -19,16 +19,6 @@ public class SyncThreadDemo2 {
      * 预期结果：打印的name和dec数据不会乱。对象持有的都是类级别的锁，不同线程之间有互斥锁的现象。
      * 实际结果：按顺序输出
      *
-     synchronized static method name name0 description dec0
-     synchronized static method name name9 description dec9
-     synchronized static method name name8 description dec8
-     synchronized static method name name7 description dec7
-     synchronized static method name name6 description dec6
-     synchronized static method name name5 description dec5
-     synchronized static method name name4 description dec4
-     synchronized static method name name3 description dec3
-     synchronized static method name name2 description dec2
-     synchronized static method name name1 description dec1
      */
     public static void staticMethodTest(){
         MyRunnableToStatic myRunnableToStatic = new MyRunnableToStatic();

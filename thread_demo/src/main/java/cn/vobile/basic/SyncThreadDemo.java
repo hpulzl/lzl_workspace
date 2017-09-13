@@ -25,7 +25,7 @@ public class SyncThreadDemo {
      * class作用于所有创建SyncThread的地方
      */
     static class SyncThread extends Thread{
-        private static Object blockerLock = new Object();
+        private Object blockerLock = new Object();
         public SyncThread(){
 
         }

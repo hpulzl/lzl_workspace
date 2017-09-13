@@ -43,7 +43,7 @@ public class SyncObject {
     /**
      * 修饰静态方法，属于类级别锁，类似于SyncObject.class
      */
-    public static void staticMethod(String name,String description){
+    public synchronized static void staticMethod(String name,String description){
         try {
             aaaa = name;
             Thread.sleep(2000);
@@ -73,10 +73,29 @@ public class SyncObject {
      * 修饰代码块，可以设置代码块锁的类型--（类级别锁和对象级别锁）
      */
     public void methodToBlock(){
-        synchronized (SyncObject.class){
-            System.out.println("synchronized Block method");
+        Object o = new Object();
+        synchronized (o){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + " synchronized Block method AAAA " + o);
+            synchronized (Object.class){
+                System.out.println(Thread.currentThread().getName() + " synchronized Block method BBBB " + o);
+            }
         }
-        System.out.println("非锁代码块的输出...");
+        System.out.println(Thread.currentThread().getName() + "非锁代码块的输出...");
     }
 
+    public static void main(String[] args) {
+        for (int i=0;i < 10; i++){
+            Thread thread = new Thread(new Runnable() {
+                public void run() {
+                    new SyncObject().methodToBlock();
+                }
+            });
+            thread.start();
+        }
+    }
 }

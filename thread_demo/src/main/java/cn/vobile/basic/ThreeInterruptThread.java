@@ -30,8 +30,8 @@ public class ThreeInterruptThread{
         Thread thread = Thread.currentThread();
         System.out.println(thread.getName() + "当前线程的状态--0："+thread.isInterrupted());
         Thread.currentThread().interrupt();
-        System.out.println(thread.getName() + "当前线程的状态--1："+thread.isInterrupted());
-        System.out.println(thread.getName() + "当前线程的状态--2："+thread.isInterrupted());
+        System.out.println(thread.getName() + "调用中断方法，仍然继续执行，当前线程的状态--1："+thread.isInterrupted());
+        System.out.println(thread.getName() + "调用中断方法，仍然继续执行，当前线程的状态--2："+thread.isInterrupted());
     }
 
     /**

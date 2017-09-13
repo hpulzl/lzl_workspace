@@ -9,10 +9,10 @@ package cn.vobile.basic;
  */
 public class InterruptThread {
     public static void main(String[] args) {
-        //isInterruptedTest();
-        //interruptedTest();
-        //interruptedThreadMethod1();
-        interruptedThreadMethod2();
+//        isInterruptedTest();
+//        interruptedTest();
+//        interruptedThreadMethod1();
+//        interruptedThreadMethod2();
     }
 
     public static void isInterruptedTest(){
