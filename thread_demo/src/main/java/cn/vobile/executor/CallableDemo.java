@@ -19,7 +19,8 @@ public class CallableDemo {
 //        newSingleThreadExecutor();
 //        newSchduleThreadExecutor();
 //        callableSubmitTest();
-        myNewThreadPoolTest();
+//        myNewThreadPoolTest();
+        callableSubmitByTest();
     }
 
     /**
@@ -35,6 +36,21 @@ public class CallableDemo {
         }
         threadPoolExecutor.shutdown();
     }
+
+    public static void callableSubmitByTest() throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        CompletionService<String> completionService = new ExecutorCompletionService<String>(executorService);
+        List<Future<String>> list = new ArrayList<Future<String>>();
+        for (int i = 0; i < 10 ; i++) {
+            completionService.submit(new MyCallable<String>());
+
+        }
+        while (completionService.take() != null){
+            System.out.println("future get = " + completionService.take().get());
+        }
+        executorService.shutdown();
+    }
+
     public static void callableSubmitTest() throws ExecutionException, InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
         List<Future<String>> list = new ArrayList<Future<String>>();

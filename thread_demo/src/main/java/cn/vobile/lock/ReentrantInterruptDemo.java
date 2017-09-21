@@ -1,4 +1,4 @@
-package cn.vobile;
+package cn.vobile.lock;
 
 import cn.vobile.basic.model.MyReentrantLockBuffer;
 import cn.vobile.basic.model.MySyncBuffer;
