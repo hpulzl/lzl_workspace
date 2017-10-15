@@ -36,8 +36,8 @@ public class VolatileDemo{
     public volatile int incVolCount = 0;
 
     public static void main(String[] args) {
-        volatileNoAtomic();
-//        syncAtomic();
+//        volatileNoAtomic();
+        syncAtomic();
     }
     public static void syncAtomic(){
         VolatileDemo volatileDemo = new VolatileDemo();

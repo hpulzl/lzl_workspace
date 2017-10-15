@@ -1,7 +1,6 @@
 package cn.vobile.basic.model;
 
 
-import cn.vobile.lock.ReentrantLockDemo;
 
 import java.util.concurrent.locks.ReentrantLock;
 

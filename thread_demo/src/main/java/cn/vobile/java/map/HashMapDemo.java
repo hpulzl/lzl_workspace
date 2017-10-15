@@ -1,4 +1,5 @@
-package cn.vobile.java;
+package cn.vobile.java.map;
+
 
 /**
  * @Author: li_zhilei
