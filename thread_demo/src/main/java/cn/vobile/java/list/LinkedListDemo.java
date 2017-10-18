@@ -3,6 +3,7 @@ package cn.vobile.java.list;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @Author: li_zhilei
@@ -15,7 +16,8 @@ public class LinkedListDemo {
 //        addLinked();
 //        removeLinked();
 //        addAllLinked();
-        threadList();
+//        threadList();
+        queueLinkedList();
     }
 
     /**
@@ -76,6 +78,14 @@ public class LinkedListDemo {
         t2.start();
     }
 
+    public static void queueLinkedList(){
+        Queue<String> queue = new LinkedList<>();
+        queue.add("AAA");
+        queue.offer("NNN");
+        queue.add("CCC");
+        System.out.println("queue = " + queue);
+    }
+    
     static class T1 extends Thread{
 
         List<Integer> list = null;

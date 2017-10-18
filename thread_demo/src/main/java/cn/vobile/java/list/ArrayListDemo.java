@@ -16,7 +16,15 @@ public class ArrayListDemo {
 //        systemCopyOf();
 //        addList();
 //        growList();
-        syncList();
+//        syncList();
+        //
+        int s = (10 + 3) >>> 1;
+        System.out.println("s = " + s);
+
+        int a = -1 >> 3;
+        int b = -1 >>> 3;
+        System.out.println("a = " + Integer.toBinaryString(a) + " b = " + Integer.toBinaryString(b));
+        System.out.println("a = " + a + " b = " + b);
     }
 
     /**
@@ -38,18 +46,24 @@ public class ArrayListDemo {
         List<String> list = new ArrayList<>(12);
         // add方法中有rangeCheckForAdd(index)判断;
         list.add(13,"A");
-        System.out.println("list = " + list);
+        System.out.println("list = " + list.toString());
     }
 
     public static void addList(){
         List list = new ArrayList();
-        list.add("A");
+        list.add("CC");
         list.add("B");
 
         //set方法类似于修改（替换），set的index必须小于size的大小
-        list.set(1,"CC");
+       // list.set(1,"CC");
+        list.add("");
+        list.add(null);
+        list.add("CC");
 
-        list.remove(0);
+       // list.remove(0);
+       // list.remove(null);
+        list.remove("CC");
+        System.out.println("list = " + list);
     }
 
     /**
