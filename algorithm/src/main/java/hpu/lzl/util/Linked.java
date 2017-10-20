@@ -22,13 +22,34 @@ public class Linked<E> {
         return true;
     }
 
-    public void revert(){
+    public Node revert(Node head){
+        Node pre = null;
+        Node temp;
+        while (head != null){
+            temp = head.next;
+            head.next = pre;
+            pre = head;
+            head = temp;
+
+        }
+        return pre;
     }
 
     public int size(){
         return size;
     }
 
+    public void printLinked(Node cur){
+        StringBuffer sb = new StringBuffer();
+        sb.append("[");
+        while (cur != null){
+            sb.append(cur.data).append(",");
+            cur = cur.next;
+        }
+        sb.deleteCharAt(sb.length() -1);
+        sb.append("]");
+        System.out.println("linked is " + sb.toString());
+    }
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -56,11 +77,11 @@ public class Linked<E> {
     public static void main(String[] args) {
         Linked<String> linked = new Linked<>();
         linked.add("A");
-        linked.add("B");
-        linked.add("C");
-        linked.add("D");
-        System.out.println("linked = " + linked.toString() + " linked size = " + linked.size());
-        linked.revert();
-        System.out.println("linked = " + linked.toString());
+//        linked.add("B");
+//        linked.add("C");
+//        linked.add("D");
+        linked.printLinked(linked.first);
+        Node node = linked.revert(linked.first);
+        linked.printLinked(node);
     }
 }
