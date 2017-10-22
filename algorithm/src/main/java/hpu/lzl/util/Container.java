@@ -15,6 +15,14 @@ public interface Container<E> {
     boolean add(E e);
 
     /**
+     * 在某个位置添加元素
+     * @param index
+     * @param e
+     * @return
+     */
+    void add(int index,E e);
+
+    /**
      * 根据元素内容，
      * 删除一个元素
      * @param e
@@ -44,4 +52,23 @@ public interface Container<E> {
      * @return
      */
     int size();
+
+    /**
+     * 判断集合是否为空
+     * @return
+     */
+    boolean isEmpty();
+
+    /**
+     * 清空集合
+     */
+    void clear();
+
+    /**
+     * 获取元素
+     * @param index
+     * @return
+     */
+    E get(int index);
+
 }

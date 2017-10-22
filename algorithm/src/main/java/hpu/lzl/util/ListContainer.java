@@ -34,6 +34,17 @@ public class ListContainer<E> implements Container<E> {
         return true;
     }
 
+    @Override
+    public void add(int index, E e) {
+        checkIndex(index);
+        //是否扩容操作
+        ensureLarge(size + 1);
+        //将index之后的元素后移一位。
+        System.arraycopy(elements,index,elements,index+1,size-index);
+        elements[index] = e;
+        size++;
+    }
+
     private void ensureLarge(int i) {
         //需要扩容操作
         if (i - initialCapcity > 0){
@@ -41,6 +52,11 @@ public class ListContainer<E> implements Container<E> {
         }
     }
 
+    private void checkIndex(int index){
+        if (index < 0 || index > size){
+            throw new ArrayIndexOutOfBoundsException(" index = " +index + " size = " + size);
+        }
+    }
     /**
      * 扩容规则
      */
@@ -98,6 +114,26 @@ public class ListContainer<E> implements Container<E> {
     }
 
     @Override
+    public boolean isEmpty() {
+        if (size > 0)
+            return true;
+        return false;
+    }
+
+    @Override
+    public void clear() {
+       for (int i=0;i<size;i++)
+           elements[i] = null;
+       size = 0;
+    }
+
+    @Override
+    public E get(int index) {
+        checkIndex(index);
+        return (E) elements[index];
+    }
+
+    @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append("[");
@@ -113,8 +149,9 @@ public class ListContainer<E> implements Container<E> {
         ListContainer<String> listContainer = new ListContainer<>(2);
         listContainer.add("AAAA");
         listContainer.add("BBBB");
-        listContainer.add("33333");
-        listContainer.remove("33333");
+        listContainer.add(2,"CCC");
+        listContainer.add(1,"DDD");
+
         System.out.println("size = "+ listContainer.size() + " listContainer = " + listContainer);
 
     }
