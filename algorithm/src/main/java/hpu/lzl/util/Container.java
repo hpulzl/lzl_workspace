@@ -45,7 +45,7 @@ public interface Container<E> {
      * @param e
      * @return
      */
-    E set(int index, E e);
+    void set(int index, E e);
 
     /**
      * 当前元素的大小

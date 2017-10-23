@@ -12,10 +12,11 @@ public class ListContainer<E> implements Container<E> {
     Object elements[];
     int size;
     int initialCapcity;
-    final int default_num = 1 << 3;
+    final int default_num = 10;
 
     public ListContainer(){
         elements = new Object[default_num];
+        initialCapcity = default_num;
     }
 
     /**
@@ -102,11 +103,19 @@ public class ListContainer<E> implements Container<E> {
     }
 
     public E remove(int index) {
-        return null;
+        checkIndex(index);
+        E old = (E) elements[index];
+        int var = size - index - 1;
+        if (var > 0){
+            System.arraycopy(elements,index + 1,elements,index,var);
+        }
+        elements[--size]=null;
+        return old;
     }
 
-    public E set(int index, E e) {
-        return null;
+    public void set(int index, E e) {
+        checkIndex(index);
+        elements[index] = e;
     }
 
     public int size() {
@@ -151,6 +160,7 @@ public class ListContainer<E> implements Container<E> {
         listContainer.add("BBBB");
         listContainer.add(2,"CCC");
         listContainer.add(1,"DDD");
+        listContainer.set(5,"fdjs");
 
         System.out.println("size = "+ listContainer.size() + " listContainer = " + listContainer);
 
