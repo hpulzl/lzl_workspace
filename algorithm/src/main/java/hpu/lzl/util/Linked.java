@@ -5,21 +5,32 @@ package hpu.lzl.util;
  * @Date: create in 09:04 17/10/19.
  * @description:单向链表的一般特征
  */
-public class Linked<E> {
+public class Linked<E> implements Container<E>{
 
     int size;
     Linked.Node first;
 
-    /**
-     * @param e
-     * @return
-     */
-    public boolean add(E e){
+    @Override
+    public void add(int index, E e) {
         Linked.Node var = new Node(e,null);
         var.next = first;
         first = var;
         size++;
-        return true;
+    }
+
+    @Override
+    public boolean remove(E e) {
+        return false;
+    }
+
+    @Override
+    public E remove(int index) {
+        return null;
+    }
+
+    @Override
+    public void set(int index, E e) {
+
     }
 
     public Node revert(Node head){
@@ -37,6 +48,21 @@ public class Linked<E> {
 
     public int size(){
         return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public E get(int index) {
+        return null;
     }
 
     public void printLinked(Node cur){
