@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 
 /**
- * Created by: guobo 17/1/19 下午5:20
  *
  * alibaba druid 页面监控配置   访问url  http://localhost:8080/项目名/druid/index.html
  *

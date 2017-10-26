@@ -30,4 +30,8 @@ public class BooksService {
         Assert.notNull(list,"list 集合不能为空");
         booksMapper.insertList(list);
     }
+
+    public List<Books> listBooks(){
+        return booksMapper.selectAll();
+    }
 }
