@@ -1,7 +1,9 @@
 package com.lzl.service.book;
 
 import com.lzl.bean.book.Books;
+import com.lzl.bean.test.PcUserInfo;
 import com.lzl.mapper.book.BooksMapper;
+import com.lzl.mapper.test.PcUserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,8 @@ import java.util.List;
 public class BooksService {
     @Autowired
     private BooksMapper booksMapper;
+    @Autowired
+    private PcUserInfoMapper pcUserInfoMapper;
 
     @Transactional
     public void save(Books books){
@@ -30,8 +34,13 @@ public class BooksService {
         Assert.notNull(list,"list 集合不能为空");
         booksMapper.insertList(list);
     }
+    
+    public void updateBooks(Books books){
+        booksMapper.updateByPrimaryKeySelective(books);
+    }
 
     public List<Books> listBooks(){
+        pcUserInfoMapper.selectAll();
         return booksMapper.selectAll();
     }
 }

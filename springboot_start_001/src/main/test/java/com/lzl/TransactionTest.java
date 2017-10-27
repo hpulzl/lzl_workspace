@@ -2,6 +2,7 @@ package com.lzl;
 
 import com.lzl.bean.book.Books;
 import com.lzl.mapper.book.BooksMapper;
+import com.lzl.service.book.BooksService;
 import com.lzl.service.book.TransactionService;
 import com.lzl.service.test.PcUserInfoService;
 import org.junit.Test;
@@ -26,6 +27,8 @@ public class TransactionTest {
     private BooksMapper booksMapper;
     @Autowired
     private PcUserInfoService pcUserInfoService;
+    @Autowired
+    private BooksService booksService;
 
     @Test
     public void readUnCommitTest(){
@@ -42,5 +45,11 @@ public class TransactionTest {
     @Test
     public void getPcUserInfTest(){
         pcUserInfoService.getPcUserInfo();
+    }
+
+    @Test
+    public void getListTest(){
+        List<Books> list = booksService.listBooks();
+        System.out.println("list = " + list);
     }
 }

@@ -21,4 +21,8 @@ public class PcUserInfoService {
     public List<PcUserInfo> getPcUserInfo(){
         return pcUserInfoMapper.selectAll();
     }
+
+    public void save(PcUserInfo pcUserInfo){
+        pcUserInfoMapper.insert(pcUserInfo);
+    }
 }

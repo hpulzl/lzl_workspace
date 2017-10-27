@@ -21,6 +21,7 @@ public class CallableDemo {
 //        callableSubmitTest();
 //        myNewThreadPoolTest();
         callableSubmitByTest();
+//        callableSubmitTest();
     }
 
     /**
@@ -43,10 +44,10 @@ public class CallableDemo {
         List<Future<String>> list = new ArrayList<Future<String>>();
         for (int i = 0; i < 10 ; i++) {
             completionService.submit(new MyCallable<String>());
-
         }
-        while (completionService.take() != null){
-            System.out.println("future get = " + completionService.take().get());
+        Future<String> f;
+        while ((f = completionService.take()) != null){
+            System.out.println("future get = " + f.get());
         }
         executorService.shutdown();
     }
@@ -63,6 +64,8 @@ public class CallableDemo {
             System.out.println("future.get() = " + future.get() + " is canceled :" + future.isDone());
         }
         executorService.shutdown();
+        System.out.println(" 主线程执行完毕");
+
     }
     static class MyCallable<String> implements Callable<String>{
         public String call() throws Exception {
