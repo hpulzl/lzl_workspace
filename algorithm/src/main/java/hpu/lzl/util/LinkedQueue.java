@@ -5,7 +5,7 @@ package hpu.lzl.util;
  * 链式队列
  * 有以下特征
  * 1. 链式队列没有队满的情况，可以无限制的增加。
- * 2. 链式队列的底层实现的单向链表
+ * 2. 链式队列的底层实现的单向链表。
  */
 public class LinkedQueue<E> implements Queue<E>{
 
@@ -15,26 +15,31 @@ public class LinkedQueue<E> implements Queue<E>{
     }
     @Override
     public E poll() {
-        return null;
+        return (E) linked.remove(0);
     }
 
     @Override
     public E peek() {
-        return null;
+        return (E) linked.get(0);
     }
 
     @Override
     public boolean put(E e) {
-        return false;
+        return linked.add(e);
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return linked.isEmpty();
     }
 
     @Override
     public int size() {
-        return 0;
+        return linked.size();
+    }
+
+    @Override
+    public String toString() {
+        return linked.toString();
     }
 }
