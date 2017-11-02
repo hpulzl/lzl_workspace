@@ -1,11 +1,13 @@
 package hpu.lzl.tree;
 
 
+import hpu.lzl.util.SequenceStack;
+import hpu.lzl.util.Stack;
 
 /**
  * Created by lzl on 2017/11/1.
  * 实现二叉树实例
- * 完成树的先序遍历、中序遍历、后序遍历等
+ * 完成树的先序遍历、中序遍历、后序遍历、深度优先遍历、广度优先遍历等
  */
 public class BinaryTree<E> {
     TreeNode parent;
@@ -16,22 +18,19 @@ public class BinaryTree<E> {
         parent = leaf = new TreeNode(null);
     }
     public BinaryTree(TreeNode n){
-       nodes =  new TreeNode<>(n);
+       nodes =  n;
     }
 
     public static void main(String[] args) {
-        BinaryTree<String> binaryTree = new BinaryTree<String>();
-//        binaryTree.puTree("A");
-//        binaryTree.puTree("B");
-//        binaryTree.puTree("C");
-//        binaryTree.puTree("D");
-//        binaryTree.puTree("E");
-//        binaryTree.puTree("F");
-
-//        System.out.println(binaryTree);
-
-        BinaryTree bt = create();
-        System.out.println(bt.toString());
+        //先序遍历
+        System.out.println("======先序遍历======");
+        preOrder(create());
+        //中序遍历
+        System.out.println("======中序遍历======");
+        inOrder(create());
+        //后序遍历
+        System.out.println("======后序遍历======");
+        afterOrder(create());
     }
 
     /**                  a
@@ -40,7 +39,7 @@ public class BinaryTree<E> {
      *              h i
      * @return
      */
-    public static BinaryTree create(){
+    public static TreeNode create(){
         TreeNode a,b,c,d,e,f,g,h,i;
         i = new TreeNode("i");
         h = new TreeNode("h");
@@ -51,35 +50,67 @@ public class BinaryTree<E> {
         c = new TreeNode("c",f,g);
         b = new TreeNode("b",d,e);
         a = new TreeNode("a",b,c);
-        return new BinaryTree(a);
+        return a;
     }
 
     /**
-     * 生成的策略，
-     * 默认是从中，左，右的顺序
-     * 即
-     * @param e
+     * 前序遍历
+     * 根节点-->左节点-->右节点
      */
-    public void puTree(E e){
-        if (e == null){
-            throw new NullPointerException();
+    public static void preOrder(TreeNode node){
+        if (node == null){
+            return;
         }
-
+        System.out.print(node.data + " ");
+        preOrder(node.left);
+        preOrder(node.right);
     }
 
     /**
-     * 左序遍历
+     * 非递归的前序遍历
+     * @param node
      */
-    public void leftOrder(){
+    public static void preOrderNoRecursion(TreeNode node){
+        Stack<TreeNode> stack  = new SequenceStack<>();
+        stack.push(node);
+        //从根节点划分，分别遍历左子树、又子树
+        while (stack != null && stack.size() > 0){
+            if (node != null){
+                System.out.print(node.data + " ");
+                node = node.left;
+                stack.push(node);
+            }else {
+                TreeNode node1 = stack.pop();
+            }
+        }
+    }
+    /**
+     * 中序遍历
+     * 左节点-->根节点-->右节点
+     */
+    public static void inOrder(TreeNode node){
+        if (node == null){
+            return;
+        }
+        inOrder(node.left);
+        System.out.print(node.data + " ");
+        inOrder(node.right);
+    }
 
+    /**
+     * 后序遍历
+     * 左节点-->右节点-->根节点
+     */
+    public static void afterOrder(TreeNode node){
+        if (node == null){
+            return;
+        }
+        afterOrder(node.left);
+        afterOrder(node.right);
+        System.out.print(node.data + " ");
     }
     public int size(){
         return size;
-    }
-
-    @Override
-    public String toString() {
-        return nodes.toString();
     }
 
     static class TreeNode<E>{
@@ -97,16 +128,32 @@ public class BinaryTree<E> {
             this.data = data;
         }
 
-
-        @Override
-        public String toString() {
-            if (data ==  null){
+        /**
+         * 广度优先遍历，按层遍历
+         * @return
+         */
+        public String printTreeFromTop(TreeNode node) {
+            if (node ==  null){
                 return "";
             }
             StringBuffer sb = new StringBuffer();
-            sb.append("节点是:" + data);
-            sb.append(" 左节点是:" + left.data);
-            sb.append(" 右节点是:" + right.data);
+            sb.append(node.toString());
+            while (node.left != null && node.right !=null){
+
+            }
+            return sb.toString();
+        }
+
+        @Override
+        public String toString() {
+            if (data == null)
+                return "";
+            StringBuffer sb = new StringBuffer();
+            sb.append(" 中间节点:" + data);
+            if (left != null)
+                sb.append(" 左节点是:" + left.data);
+            if (right != null)
+                sb.append(" 右节点是:" + right.data);
             return sb.toString();
         }
     }
