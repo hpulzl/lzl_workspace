@@ -8,7 +8,16 @@ import scala.xml.Null
   */
 object HelloScala {
   def main(args: Array[String]): Unit = {
-    println("A")
+    println("有返回值的函数")
+    /**
+      * 调用的方式
+      */
+    print(hasReturn(age = 12,name = "a"))
+    println(hasReturn("lzl",24))
+    print(noReturn(b = "b",a = 1))
+    print(noReturn(1,"b"))
+    print(noReturn("a","b","c"))
+    print("===========" + returnString("aaaab"))
     println("======scala数据类型====")
     dataType()
     println("======scala变量声明====")
@@ -17,6 +26,31 @@ object HelloScala {
     relationOperator()
     println("======scala循环语句=======")
     loopType()
+  }
+
+  def noReturn(strs : String*): Unit ={
+    for (str <- strs){
+      print(str)
+    }
+    println("传入相同类型数据的集合")
+  }
+  def noReturn(a : Int,b : String):Unit = {
+    println("带参数的Unit返回值类型函数: a = " + a + " b =" + b)
+  }
+
+  def returnString(a : String){
+    return a
+  }
+  /**
+    * 有返回值的函数
+    * @param name
+    * @param age
+    * @return
+    */
+  def hasReturn(name: String, age: Int):String = {
+    print("name is " + name + " age is " + age +"\n")
+    //不用return
+    name
   }
 
   /**

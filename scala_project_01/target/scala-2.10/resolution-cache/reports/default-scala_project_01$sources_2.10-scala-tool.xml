@@ -7,16 +7,15 @@
 		revision="1.0"
 		conf="scala-tool"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20171107181202"/>
+		date="20171108195605"/>
 	<dependencies>
 		<module organisation="org.scala-lang" name="scala-compiler">
 			<revision name="2.10.4" status="release" pubdate="20140319054738" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, optional, optional(default), master" position="1">
-				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html
-			"/>
-				<metadata-artifact status="no" details="" size="2953" time="0" location="/Users/vobile_lzl/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.4/scala-compiler-2.10.4.pom"/>
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html    "/>
+				<metadata-artifact status="no" details="" size="2988" time="0" location="C:\Users\lzl\.ivy2\cache\org.scala-lang\scala-compiler\ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.4/scala-compiler-2.10.4.pom"/>
 				<caller organisation="default" name="scala_project_01$sources_2.10" conf="scala-tool" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="1.0"/>
 				<artifacts>
-					<artifact name="scala-compiler" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="2058278" time="4809" location="/Users/vobile_lzl/.ivy2/cache/org.scala-lang/scala-compiler/srcs/scala-compiler-2.10.4-sources.jar">
+					<artifact name="scala-compiler" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2058278" time="0" location="C:\Users\lzl\.ivy2\cache\org.scala-lang\scala-compiler\srcs\scala-compiler-2.10.4-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.4/scala-compiler-2.10.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -24,13 +23,12 @@
 		</module>
 		<module organisation="org.scala-lang" name="jline">
 			<revision name="2.10.4" status="release" pubdate="20140319054650" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, master(compile), compile(*), master" position="3">
-				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html
-			"/>
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html    "/>
 				<license name="The BSD License" url="http://www.opensource.org/licenses/bsd-license.php"/>
-				<metadata-artifact status="no" details="" size="2739" time="0" location="/Users/vobile_lzl/.ivy2/cache/org.scala-lang/jline/ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/jline/2.10.4/jline-2.10.4.pom"/>
+				<metadata-artifact status="no" details="" size="2773" time="0" location="C:\Users\lzl\.ivy2\cache\org.scala-lang\jline\ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/jline/2.10.4/jline-2.10.4.pom"/>
 				<caller organisation="default" name="scala_project_01$sources_2.10" conf="scala-tool" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="1.0"/>
 				<artifacts>
-					<artifact name="jline" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="58779" time="1523" location="/Users/vobile_lzl/.ivy2/cache/org.scala-lang/jline/srcs/jline-2.10.4-sources.jar">
+					<artifact name="jline" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="58779" time="0" location="C:\Users\lzl\.ivy2\cache\org.scala-lang\jline\srcs\jline-2.10.4-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/jline/2.10.4/jline-2.10.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -38,12 +36,11 @@
 		</module>
 		<module organisation="org.scala-lang" name="scala-reflect">
 			<revision name="2.10.4" status="release" pubdate="20140319054707" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.4/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
-				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html
-			"/>
-				<metadata-artifact status="no" details="" size="2835" time="0" location="/Users/vobile_lzl/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.4/scala-reflect-2.10.4.pom"/>
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html    "/>
+				<metadata-artifact status="no" details="" size="2870" time="0" location="C:\Users\lzl\.ivy2\cache\org.scala-lang\scala-reflect\ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.4/scala-reflect-2.10.4.pom"/>
 				<caller organisation="default" name="scala_project_01$sources_2.10" conf="scala-tool" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="1.0" extra-info.apiURL="http://www.scala-lang.org/api/2.10.4/"/>
 				<artifacts>
-					<artifact name="scala-reflect" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="434883" time="2154" location="/Users/vobile_lzl/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.10.4-sources.jar">
+					<artifact name="scala-reflect" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="434883" time="0" location="C:\Users\lzl\.ivy2\cache\org.scala-lang\scala-reflect\srcs\scala-reflect-2.10.4-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.4/scala-reflect-2.10.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -51,12 +48,11 @@
 		</module>
 		<module organisation="org.scala-lang" name="scala-library">
 			<revision name="2.10.4" status="release" pubdate="20140319054629" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.4/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, optional, optional(default), compile(*), master" position="2">
-				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html
-         "/>
-				<metadata-artifact status="no" details="" size="2669" time="0" location="/Users/vobile_lzl/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.pom"/>
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2701" time="0" location="C:\Users\lzl\.ivy2\cache\org.scala-lang\scala-library\ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.pom"/>
 				<caller organisation="default" name="scala_project_01$sources_2.10" conf="scala-tool" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="1.0" extra-info.apiURL="http://www.scala-lang.org/api/2.10.4/"/>
 				<artifacts>
-					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="1062421" time="3610" location="/Users/vobile_lzl/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.10.4-sources.jar">
+					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1062421" time="0" location="C:\Users\lzl\.ivy2\cache\org.scala-lang\scala-library\srcs\scala-library-2.10.4-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4-sources.jar"/>
 					</artifact>
 				</artifacts>
@@ -65,10 +61,10 @@
 		<module organisation="org.fusesource.jansi" name="jansi">
 			<revision name="1.4" status="release" pubdate="20100715222157" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://${forge-project-id}.fusesource.org" downloaded="false" searched="false" default="false" conf="compile, master(compile), compile(*), master" position="0">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="no" details="" size="3355" time="0" location="/Users/vobile_lzl/.ivy2/cache/org.fusesource.jansi/jansi/ivy-1.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom"/>
+				<metadata-artifact status="no" details="" size="3393" time="0" location="C:\Users\lzl\.ivy2\cache\org.fusesource.jansi\jansi\ivy-1.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom"/>
 				<caller organisation="default" name="scala_project_01$sources_2.10" conf="scala-tool" rev="1.4" rev-constraint-default="1.4" rev-constraint-dynamic="1.4" callerrev="1.0"/>
 				<artifacts>
-					<artifact name="jansi" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="15341" time="1440" location="/Users/vobile_lzl/.ivy2/cache/org.fusesource.jansi/jansi/srcs/jansi-1.4-sources.jar">
+					<artifact name="jansi" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="15341" time="0" location="C:\Users\lzl\.ivy2\cache\org.fusesource.jansi\jansi\srcs\jansi-1.4-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar"/>
 					</artifact>
 				</artifacts>
