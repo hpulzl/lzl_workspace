@@ -6009,7 +6009,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.6!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 2513ms :: artifacts dl 26ms
+[debug] :: resolution report :: resolve 2961ms :: artifacts dl 41ms
 [debug] 	report for default#scala_project_01-build;0.1-SNAPSHOT compile produced in /Users/vobile_lzl/lzl_workspace/scala_project_01/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-scala_project_01-build-compile.xml
 [debug] 	report for default#scala_project_01-build;0.1-SNAPSHOT runtime produced in /Users/vobile_lzl/lzl_workspace/scala_project_01/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-scala_project_01-build-runtime.xml
 [debug] 	report for default#scala_project_01-build;0.1-SNAPSHOT test produced in /Users/vobile_lzl/lzl_workspace/scala_project_01/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-scala_project_01-build-test.xml
@@ -6023,5 +6023,5 @@
 [debug] 	report for default#scala_project_01-build;0.1-SNAPSHOT docs produced in /Users/vobile_lzl/lzl_workspace/scala_project_01/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-scala_project_01-build-docs.xml
 [debug] 	report for default#scala_project_01-build;0.1-SNAPSHOT pom produced in /Users/vobile_lzl/lzl_workspace/scala_project_01/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-scala_project_01-build-pom.xml
 [debug] 	report for default#scala_project_01-build;0.1-SNAPSHOT scala-tool produced in /Users/vobile_lzl/lzl_workspace/scala_project_01/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-scala_project_01-build-scala-tool.xml
-[debug] 	resolve done (2513ms resolve - 26ms download)
+[debug] 	resolve done (2961ms resolve - 41ms download)
 [info] Done updating.
