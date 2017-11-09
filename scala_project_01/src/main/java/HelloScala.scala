@@ -8,24 +8,36 @@ import scala.xml.Null
   */
 object HelloScala {
   def main(args: Array[String]): Unit = {
-    println("有返回值的函数")
+//    println("有返回值的函数")
     /**
       * 调用的方式
       */
-    print(hasReturn(age = 12,name = "a"))
-    println(hasReturn("lzl",24))
-    print(noReturn(b = "b",a = 1))
-    print(noReturn(1,"b"))
-    print(noReturn("a","b","c"))
-    print("===========" + returnString("aaaab"))
-    println("======scala数据类型====")
-    dataType()
-    println("======scala变量声明====")
-    varStatement()
-    println("======scala运算符=====")
-    relationOperator()
-    println("======scala循环语句=======")
-    loopType()
+//    print(hasReturn(age = 12,name = "a"))
+//    println(hasReturn("lzl",24))
+//    print(noReturn(b = "b",a = 1))
+//    print(noReturn(1,"b"))
+//    print(noReturn("a","b","c"))
+//    print("===========" + returnString("aaaab"))
+//    println("======scala数据类型====")
+//    dataType()
+//    println("======scala变量声明====")
+//    varStatement()
+//    println("======scala运算符=====")
+//    relationOperator()
+//    println("======scala循环语句=======")
+//    loopType()
+//    println("======scala的if语句=======")
+//    ifType()
+//    println("======scala的while语句=======")
+//    whileType()
+//    println("======scala的break函数=======")
+//    breakType()
+      println("======scala的闭包=====")
+//      println(multi(10))
+//      println(multiplier(4))
+    var a = closure(10)
+    println("a = " + a)
+    println( " b = " + a(2))
   }
 
   def noReturn(strs : String*): Unit ={
@@ -146,6 +158,16 @@ object HelloScala {
   }
 
   /**
+    * if语句
+    */
+  def ifType(): Unit ={
+    var a = 10
+    var b = if (a > 0){
+      a
+    }
+    println("b =" +b)
+  }
+  /**
     * 循环语句
     * for while do{}while
     * 循环终止
@@ -175,6 +197,49 @@ object HelloScala {
       if (num == 5)
         loop.break()
     }
-
   }
+
+  /**
+    * while循环
+    */
+  def whileType(): Unit ={
+    var flag = true
+    var num : Int = 0
+    println("while 循环打印：")
+    while (flag){
+      num += 1
+      print(" " + num)
+      if (num == 10)
+        flag = false
+    }
+  }
+
+  def breakType(): Unit ={
+    var loop = Breaks
+    loop.breakable{
+      for (num <- 1 to 10 if (num % 2 == 0)){
+        print(" " + num)
+        if(num == 10)
+          loop.break()
+      }
+    }
+    println()
+    var num = 10
+    while (num > 0){
+      num -= 1
+      print(" " + num)
+      if (num == 4){
+        loop.break()
+      }
+    }
+  }
+
+  /**
+    * 函数的闭包
+    */
+  var multiplier = (i :Int) => i * 10
+  var factor = 3
+  var multi = (i : Int) => i * factor
+
+  def closure(more : Int) = (i : Int)   => i + more
 }
