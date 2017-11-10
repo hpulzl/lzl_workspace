@@ -7,12 +7,14 @@ package cn.vobile.command;
  */
 public class ExecuteMain {
     public static void main(String[] args) {
-        //产生一个命令
-        Command command = new LightCommand();
+        //产生电灯的命令
+        Command lightCommand = new LightCommand();
+        //产生电视机的命令
+        Command videoCommand = new VideoCommand();
         CommandControl commandControl = new CommandControl();
-        //命令交给命令控制中心
-        commandControl.setCommand(command);
-        //按下命令按钮
-        commandControl.buttonWasPressed();
+        commandControl.addCommand(lightCommand);
+        commandControl.addCommand(videoCommand);
+
+        commandControl.executeByQueue();
     }
 }
