@@ -124,20 +124,6 @@ def rangeArray(): Unit ={
       print(" " + arr)
   }
 ```
-* fill函数
-
-返回一个数组长度为10的数组，数组每个值为2
-
-```
-def fillArray(): Unit ={
-    val array = Array.fill(10)(3)
-    for (arr <- array)
-      print(" " + arr)
-  }
-```
-
-#集合
-
 
 
 
