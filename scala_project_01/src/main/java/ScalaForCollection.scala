@@ -20,7 +20,11 @@ object ScalaForCollection {
 
 
 //    createMap()
-    basicMap()
+//    basicMap()
+
+//    createTuple()
+//    getOption()
+    optionType()
   }
 
   /**
@@ -202,6 +206,7 @@ object ScalaForCollection {
     import scala.collection.mutable
     val map = Map("A" -> 1,"B" -> 2,"c" -> 3)
     val mutableMap = mutable.Map("A" -> 1,"B" -> 2,"c" -> 3)
+    val mutableMap2 = mutable.Map("A" -> 1,"B" -> 2,"c" -> 3)
 
     println("keys :" + map.keys)
     println("values :" + map.values)
@@ -221,4 +226,80 @@ object ScalaForCollection {
       print( "Key = " + i )
       println(" Value = " + maps(i) )}
   }
+
+  /******************元组*********************/
+  /**
+    * 1. 元组与其他集合的区别在于，一个元组中可以存放不同类型的元素.
+    * 2. 元组也是不可变的
+    */
+  def createTuple(): Unit ={
+
+    /**
+      * Tuple2和Tuple3...等的区别
+      * tuple2可以存放两个元素
+      * tuple3可以存放三个元素
+      * 最多可以存放22个元素
+      * Tuple1 可以是1-22个元素中的任意一个或多个
+      * Tuple22 只能是22个元素
+      */
+    val t = (1,2.3,"hhh",10L,2.333,'f',"d","fd")
+    print("元组创建方式一:" + t + "\n")
+
+    val tuple1 = Tuple1(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22)
+    val tuple1_1 = Tuple1(("A","B"),'A','b')
+    print("创建方式二:"+tuple1 + "\n")
+    print("创建方式二:"+tuple1_1 + "\n")
+    val tuple2 = Tuple2(1,'s')
+    print("创建方式三:"+tuple2 + "\n")
+    val tuple6 = Tuple6(('G',"DD",1,3D,'d',30L,"S"),('F',"d",9.0F),"sss","s",1,Console)
+    print("创建方式四:"+tuple6 + "\n")
+    val tuple22 = Tuple22(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22)
+    print("创建方式四:"+tuple6 + "\n")
+
+    //访问元素
+    print("获得元素:" + t._1 + t._2 + t._6 + tuple1._1._3 + "\n")
+    tuple1.productIterator.foreach(i => print(" " + i))
+    println()
+    //元组转换字符串
+    print("元组转换字符串：" + tuple6.toString() + "\n")
+    //元组元素交换(两个元素才能交换)
+    print("元组元素交换："+tuple2.swap + "\n")
+  }
+  /******************option选项*********************/
+
+  /**
+    * 表示返回值是可选的，如果返回值不为空，那就会返回Some，并匹配其类型。
+    * 如果返回值为空，就会返回None。
+    * 主要用于不确定是否有返回值的方法中
+    */
+
+  def getOption(): Unit ={
+    //定义map的key和value都为string
+    val map:Map[String,String] = Map("A"->"hhh","B"->"XXX","C"->"LLL")
+    val a: Option[String] = map.get("A")
+    val b : Option[String] = map.get("F")
+
+    print("获取a:" + a + "\n")
+    print("获取b,获取不到返回Node:" + b + "\n")
+    print("使用模式匹配来获取值一:" + showType(map.get("C")) + "\n")
+    print("使用模式匹配来获取值二:" + showType(map.get("F")) + "\n")
+    //传入类型必须是Option类型
+    print("使用模式匹配来获取值二:" + showType(Some("A")) + "\n")
+
+  }
+  def showType(i : Option[String]) = i match {
+    case Some(s) => s
+    case None => "Null"
+  }
+  def optionType(): Unit ={
+    val a : Option[String] = Some("A")
+    val b : Option[Int] = None
+
+    //如果为空返回输入的默认值；如果不为空，返回值
+    println("返回A: " + a.getOrElse(1) )
+    println("返回1: " + b.getOrElse(1) )
+    println("b.isEmpty为true: " + b.isEmpty )
+    println("b.orNull为null: " + b.orNull + "\n a.orNull为A：" + a.orNull)
+  }
+
 }
