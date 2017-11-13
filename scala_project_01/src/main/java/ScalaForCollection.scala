@@ -21,10 +21,11 @@ object ScalaForCollection {
 
 //    createMap()
 //    basicMap()
+    otherMap()
 
 //    createTuple()
 //    getOption()
-    optionType()
+//    optionType()
   }
 
   /**
@@ -225,6 +226,25 @@ object ScalaForCollection {
     maps.keys.foreach{ i =>
       print( "Key = " + i )
       println(" Value = " + maps(i) )}
+    //增强for循环遍历
+    for((key,value) <- map) println("key = " + key + " value = " + value)
+
+    for(keys <- map.keySet) println("key = " + keys)
+
+    for(values <- map.values) println("values = " + values)
+
+  }
+
+  /**
+    * 其他map的具体实现了    */
+  def otherMap(): Unit ={
+    /**
+      * 按照key的字母顺序排序
+      */
+    val map = scala.collection.immutable.SortedMap("java" -> 23,"scala" -> 13,"python" -> 10)
+    for((key,value) <- map) println("key = " + key + " value = " + value)
+    val linkedMap = scala.collection.mutable.LinkedHashMap("HHH" -> "name","BBB" -> "age","FFF" -> "sex")
+    for((key,value) <- linkedMap) println("key = " + key + " value = " + value)
   }
 
   /******************元组*********************/
