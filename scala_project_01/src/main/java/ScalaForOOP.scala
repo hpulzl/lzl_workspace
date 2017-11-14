@@ -3,5 +3,7 @@
   * 面向对象的讲解
   */
 object ScalaForOOP {
-
+  /**
+    * isInstanceOf 和asInstanceOf
+    */
 }
