@@ -21,11 +21,13 @@ object ScalaForCollection {
 
 //    createMap()
 //    basicMap()
-    otherMap()
+//    otherMap()
 
 //    createTuple()
 //    getOption()
 //    optionType()
+
+    iteratorType()
   }
 
   /**
@@ -320,6 +322,26 @@ object ScalaForCollection {
     println("返回1: " + b.getOrElse(1) )
     println("b.isEmpty为true: " + b.isEmpty )
     println("b.orNull为null: " + b.orNull + "\n a.orNull为A：" + a.orNull)
+  }
+  def iteratorType(): Unit ={
+    println("iterator的遍历方式:")
+    val it = Iterator("A","B","C")
+    while (it.hasNext){
+      print(" " + it.next)
+    }
+    println()
+    val list = List("A","B","C","D")
+    val itr = list.iterator
+    while (itr.hasNext){
+      print(" " + itr.next)
+    }
+    println("增强for循环的遍历方式:")
+    for (str <- list){
+      print(" " + str)
+    }
+    //foreach遍历
+    list.foreach(x => print(" " + x))
+
   }
 
 }
