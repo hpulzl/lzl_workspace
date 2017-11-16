@@ -101,6 +101,11 @@
       <artifactId>spring-data-commons</artifactId>
       <version>1.13.1.RELEASE</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
