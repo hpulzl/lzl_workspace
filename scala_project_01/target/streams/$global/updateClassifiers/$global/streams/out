@@ -392,7 +392,7 @@
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.4!scala-compiler.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.10.4!scala-reflect.jar(src)
-[debug] :: resolution report :: resolve 104ms :: artifacts dl 12ms
+[debug] :: resolution report :: resolve 519ms :: artifacts dl 12ms
 [debug] 	report for default#scala_project_01$sources_2.10;1.0 compile produced in F:\Program Files (x86)\lzl_workspace\scala_project_01\target\scala-2.10\resolution-cache\reports\default-scala_project_01$sources_2.10-compile.xml
 [debug] 	report for default#scala_project_01$sources_2.10;1.0 runtime produced in F:\Program Files (x86)\lzl_workspace\scala_project_01\target\scala-2.10\resolution-cache\reports\default-scala_project_01$sources_2.10-runtime.xml
 [debug] 	report for default#scala_project_01$sources_2.10;1.0 test produced in F:\Program Files (x86)\lzl_workspace\scala_project_01\target\scala-2.10\resolution-cache\reports\default-scala_project_01$sources_2.10-test.xml
@@ -406,4 +406,4 @@
 [debug] 	report for default#scala_project_01$sources_2.10;1.0 docs produced in F:\Program Files (x86)\lzl_workspace\scala_project_01\target\scala-2.10\resolution-cache\reports\default-scala_project_01$sources_2.10-docs.xml
 [debug] 	report for default#scala_project_01$sources_2.10;1.0 pom produced in F:\Program Files (x86)\lzl_workspace\scala_project_01\target\scala-2.10\resolution-cache\reports\default-scala_project_01$sources_2.10-pom.xml
 [debug] 	report for default#scala_project_01$sources_2.10;1.0 scala-tool produced in F:\Program Files (x86)\lzl_workspace\scala_project_01\target\scala-2.10\resolution-cache\reports\default-scala_project_01$sources_2.10-scala-tool.xml
-[debug] 	resolve done (104ms resolve - 12ms download)
+[debug] 	resolve done (519ms resolve - 12ms download)

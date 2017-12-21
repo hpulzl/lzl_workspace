@@ -21,7 +21,8 @@ public class SparkFirst {
     private static JavaSparkContext sc;
     public static void main(String[] args) {
 //        firstSparkJava();
-        wordCount();
+//        wordCount();
+        wordCountByTextFile();
     }
 
     static {
@@ -46,6 +47,31 @@ public class SparkFirst {
             }
         });
 //        JavaPairRDD<String,Integer> counts = pairRDD.reduceByKey((a,b) -> a + b);
+        JavaPairRDD<String,Integer> counts = pairRDD.reduceByKey(new Function2<Integer, Integer, Integer>() {
+            @Override
+            public Integer call(Integer integer, Integer integer2) throws Exception {
+                return integer + integer2;
+            }
+        });
+
+//        counts.foreach(stringIntegerTuple2 ->System.out.println("str:" + stringIntegerTuple2._1() +
+//                "=> count:" + stringIntegerTuple2._2()));
+        counts.foreach(new VoidFunction<Tuple2<String, Integer>>() {
+            @Override
+            public void call(Tuple2<String, Integer> stringIntegerTuple2) throws Exception {
+                System.out.println("str:" + stringIntegerTuple2._1() + "=> count:" + stringIntegerTuple2._2());
+            }
+        });
+    }
+
+    public static void wordCountByTextFile(){
+       JavaRDD<String> javaRDD = sc.textFile("F:\\Program Files (x86)\\lzl_workspace\\spark_demo\\src\\main\\helloSpark.txt");
+        JavaPairRDD<String,Integer> pairRDD = javaRDD.mapToPair(new PairFunction<String, String, Integer>() {
+            @Override
+            public Tuple2<String, Integer> call(String s) throws Exception {
+                return new Tuple2<>(s,1);
+            }
+        });
         JavaPairRDD<String,Integer> counts = pairRDD.reduceByKey(new Function2<Integer, Integer, Integer>() {
             @Override
             public Integer call(Integer integer, Integer integer2) throws Exception {
