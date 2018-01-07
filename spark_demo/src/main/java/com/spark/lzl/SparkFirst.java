@@ -1,13 +1,11 @@
 package com.spark.lzl;
 
+import com.spark.lzl.sort.SecondarySort;
 import org.apache.spark.SparkConf;
-import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.Function2;
-import org.apache.spark.api.java.function.PairFunction;
-import org.apache.spark.api.java.function.VoidFunction;
+import org.apache.spark.api.java.function.*;
 import scala.Tuple2;
 
 import java.util.Arrays;
@@ -19,10 +17,11 @@ import java.util.List;
 public class SparkFirst {
     public static void main(String[] args) {
         JavaSparkContext sc = getSparkContext("sparkDemo","local");
-//        firstSparkJava();
-//        wordCount();
-//        wordCountByTextFile();
-        cogroupSparkJava(sc); //聚合
+////        firstSparkJava();
+////        wordCount();
+////        wordCountByTextFile();
+//        cogroupSparkJava(sc); //聚合
+        secondSort(sc);
         sc.close();
     }
 
@@ -131,6 +130,42 @@ public class SparkFirst {
                 System.out.println("score:" + integerTuple2Tuple2._2._2());
             }
         });
+    }
 
+    public static void secondSort(JavaSparkContext sc){
+        JavaRDD<String> javaRdd = sc.textFile("F:\\Program Files (x86)\\lzl_workspace\\spark_demo\\src\\main\\secondSort.txt");
+        JavaPairRDD<SecondarySort,String> javaPairRDD = javaRdd.mapToPair(new PairFunction<String, SecondarySort, String>() {
+            private static final long serialVersion = 1L;
+
+            /**
+             * 将文件中的每一行封装成一个Tuple2的对象
+             * @param line
+             * @return
+             * @throws Exception
+             */
+            @Override
+            public Tuple2<SecondarySort, String> call(String line) throws Exception {
+                String split[] = line.split(" ");
+                SecondarySort sort = new SecondarySort(Integer.valueOf(split[0]),Integer.valueOf(split[1]));
+                return new Tuple2<>(sort,line);
+            }
+        });
+        JavaPairRDD<SecondarySort,String> sorted = javaPairRDD.sortByKey(); // 完成二次排序
+        /**
+         * 过滤排序后自定的key，保留排序的结果
+         */
+        JavaRDD<String> javaSorted = sorted.map(new Function<Tuple2<SecondarySort, String>, String>() {
+            private static final long serialVersion = 1L;
+            @Override
+            public String call(Tuple2<SecondarySort, String> secondarySortStringTuple2) throws Exception {
+                return secondarySortStringTuple2._2();
+            }
+        });
+        javaSorted.foreach(new VoidFunction<String>() {
+            @Override
+            public void call(String s) throws Exception {
+                System.out.println(s);
+            }
+        });
     }
 }
