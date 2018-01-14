@@ -1,5 +1,6 @@
 package com.spark.lzl;
 
+import com.spark.lzl.common.SparkCommonUtil;
 import com.spark.lzl.sort.SecondarySort;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class SparkFirst {
     public static void main(String[] args) {
-        JavaSparkContext sc = getSparkContext("sparkDemo","local");
+        JavaSparkContext sc = SparkCommonUtil.getSparkContext("sparkDemo","local");
 ////        firstSparkJava();
 ////        wordCount();
 ////        wordCountByTextFile();
@@ -25,15 +26,7 @@ public class SparkFirst {
         sc.close();
     }
 
-    public static JavaSparkContext getSparkContext(String name,String master){
-        /**
-         * 第一步:创建spark的配置对象SparkConf，设置spark程序运行时的配置信息，
-         * setMaster设置程序要链接的spark集群的master的URL
-         */
-        SparkConf conf = new SparkConf().setAppName(name).setMaster(master);
-        JavaSparkContext sc = new JavaSparkContext(conf);
-        return sc;
-    }
+
     /**
      * 统计一个串字符串中，字母出现的次数
      */

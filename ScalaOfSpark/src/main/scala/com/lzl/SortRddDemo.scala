@@ -10,7 +10,8 @@ object SortRddDemo {
   def main(args: Array[String]): Unit = {
     val sc = Transformations.createSc("sortRdd","local")
 //    sortByCountDesc(sc)
-    secondarySort(sc)
+    //secondarySort(sc)
+    getTopN(sc)
     sc.stop()
   }
 
@@ -37,5 +38,19 @@ object SortRddDemo {
     //去掉sortedByKey中的key值
     val sortedResult = sortedByKey.map(sortedLine => sortedLine._2)
     sortedResult.collect().foreach(println)
+  }
+
+  /**
+    * 按照数组排序，获取前n个数据
+    * @param sc
+    */
+  def getTopN(sc:SparkContext): Unit ={
+    val arr = Array(4,3,2,10,5,30,40,3,2,80,80,80)
+    val arrRDD = sc.parallelize(arr)
+    val arrMap = arrRDD.map(line => (line,line)) //将数组转换成Map集合
+    val sortMap = arrMap.sortByKey(false) //按照key值降序排序
+    val sortedData = sortMap.map(pair => pair._2) //过滤出排序的内容
+    val top5 = sortedData.take(5) //获取前五个元素
+    top5.foreach(println)
   }
 }
