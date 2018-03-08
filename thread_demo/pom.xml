@@ -21,11 +21,22 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>com.typesafe.akka</groupId>
-          <artifactId>akka-actor_2.10</artifactId>
-          <version>2.3.4</version>
-      </dependency>
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-actor_2.11</artifactId>
+      <version>2.3.9</version>
+    </dependency>
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-agent_2.11</artifactId>
+      <version>2.3.9</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-transactor_2.10 -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-transactor_2.11</artifactId>
+      <version>2.3.9</version>
+    </dependency>
       <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>fastjson</artifactId>

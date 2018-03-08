@@ -1,8 +1,10 @@
 package cn.vobile.akka;
 
 import akka.actor.ActorRef;
+import akka.actor.ActorSelection;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import com.typesafe.config.ConfigFactory;
 
 /**
  * 创建actor的工厂类
@@ -21,6 +23,10 @@ public class ActorFactory {
         return ME;
     }
 
+    public static ActorSystem getSYSTEM() {
+        return SYSTEM;
+    }
+
     public ActorRef create(Class clazz){
         return SYSTEM.actorOf(Props.create(clazz));
     }
@@ -31,5 +37,13 @@ public class ActorFactory {
 
     public ActorRef create(Class clazz,ActorRef actorRef,String message){
         return SYSTEM.actorOf(Props.create(clazz,actorRef),message);
+    }
+
+    public ActorSelection actorSelection(String path){
+        return SYSTEM.actorSelection(path);
+    }
+
+    public void shutdown(){
+        SYSTEM.shutdown();
     }
 }

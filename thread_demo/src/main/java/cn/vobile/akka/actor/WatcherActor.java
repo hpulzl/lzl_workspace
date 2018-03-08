@@ -22,6 +22,7 @@ public class WatcherActor extends UntypedActor {
             getContext().system().shutdown();
         }else {
             unhandled(message);
+            System.out.println("unhandled message :" + message);
         }
     }
 }
