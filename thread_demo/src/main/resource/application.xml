@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 使用注解 -->
+    <!--<context:annotation-config/>-->
+
+    <bean id="countService" class="cn.vobile.akka.service.CountService" scope="singleton">
+    </bean>
+
+    <bean id="actorSystem" class="akka.actor.ActorSystem" factory-method="create" destroy-method="shutdown">
+        <constructor-arg value="systemMessage"/>
+    </bean>
+
+    <bean id="integrationWithSpringActor" class="cn.vobile.akka.actor.IntegrationWithSpringActor" scope="prototype">
+        <property name="countService" ref="countService"/>
+    </bean>
+
+
+</beans>

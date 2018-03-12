@@ -39,6 +39,7 @@ public class ThreadLocalDemo {
 
     /**
      * 一个有趣的hash散列值算法
+     * 0-32散列不重复
      */
     public static void hashOpenAddress(){
         AtomicInteger atomicInteger = new AtomicInteger();
