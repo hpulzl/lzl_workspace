@@ -3,7 +3,10 @@ package cn.vobile.akka;
 import akka.actor.*;
 import akka.pattern.Patterns;
 import cn.vobile.akka.actor.*;
+import cn.vobile.akka.service.SpringDiActorService;
 import com.typesafe.config.ConfigFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import scala.concurrent.Await;
 import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
@@ -23,7 +26,7 @@ public class ActorFactoryMain {
 //        akkaSupervisorDemo();
 //        akkaInboxDemo();
 //        akkaRouterDemo();
-        futureDemo();
+//        futureDemo();
     }
 
     /**
@@ -149,4 +152,14 @@ public class ActorFactoryMain {
         // 终止actor的执行
         mainActorRef.tell(PoisonPill.getInstance(),ActorRef.noSender());
     }
+
+    public static void springDiActor(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
+        //SpringDiActorService
+        SpringDiActorService springDiActorService = (SpringDiActorService) applicationContext.getBean("springDiActorService");
+
+        springDiActorService.doSpringActor(applicationContext);
+    }
+
+
 }
