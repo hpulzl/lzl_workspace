@@ -22,7 +22,8 @@ public class JavaStreamDemo {
 //        streamList();
 //        sequentialStreamDemo();
 //        parallelStreamDemo();
-        streamListDemo();
+//        streamListDemo();
+        countInteger();
     }
     public static void streamList(){
         List<String> list = new ArrayList<>();
@@ -104,5 +105,25 @@ public class JavaStreamDemo {
 //                sorted(comparing(Transaction::getValue).reversed()).
 //                map(Transaction::getId).
 //                collect(toList());
+    }
+
+    public static void countInteger(){
+        int count = Stream.iterate(1, i -> i + 1)
+                .limit(1000)
+                .parallel()
+                .reduce(0, Integer::sum);
+        System.out.println("并行结果：" + count);
+
+        int sequentialResult = Stream.iterate(1, i -> i + 1)
+                .limit(10)
+                .sequential()
+                .reduce(0, (a, b) -> a - b);
+        System.out.println("串行结果（数字累加的相反数）：" + sequentialResult);
+
+        int parallelResult = Stream.iterate(1, i -> i + 1)
+                .limit(1000)
+                .parallel()
+                .reduce(0, (a, b) -> a - b);
+        System.out.println("并行结果（分割求差，再合并）：" + parallelResult);
     }
 }
