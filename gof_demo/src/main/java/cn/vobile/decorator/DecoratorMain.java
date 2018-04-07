@@ -14,7 +14,7 @@ public class DecoratorMain {
         System.out.println("描述：" + beverage1.getDescription() + "。 价格：" + beverage1.cost());
         //来大杯的双倍摩卡综合咖啡
         Beverage beverage = new HouseBlend();
-        beverage.setSize(3);
+        beverage.setSize(Beverage.large);
         beverage = new Mocha(beverage);
         beverage = new Mocha(beverage);
         System.out.println("描述：" + beverage.getDescription() + "。 价格："+beverage.cost());
