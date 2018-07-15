@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd">
+    <!--配置一个redis集群-->
+    <context:property-placeholder location="application.properties"/>
+    <!--使用注释-->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.hpu.lzl"/>
+    <!--支持缓存注解-->
+    <cache:annotation-driven />
+
+    <!-- 设置的缓存管理器 -->
+    <!--<bean id="cacheManager"
+          class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+                        p:name="default" />
+
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+                        p:name="accountCache" />
+            </set>
+        </property>
+    </bean>-->
+    <!-- dummy cacheManager  --><!-- 对缓存管理器的统一管理  -->
+    <bean id="cacheManager"
+          class="org.springframework.cache.support.CompositeCacheManager">
+        <property name="cacheManagers">
+            <list>
+                <ref bean="redisCacheManager" />
+            </list>
+        </property>
+        <!--在没有cache容器的情况下使用缓存机制，系统会抛出异常，
+        所以在不想使用缓存机制时，可以设置fallbackToNoOpCache为true来禁用缓存-->
+        <property name="fallbackToNoOpCache" value="false" /><!--设为true则不使用缓存-->
+    </bean>
+    <!--使用redis缓存-->
+    <!-- Jedis线程 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig"
+          p:maxIdle="${redis.maxIdle}"
+          p:minIdle="${redis.minIdle}"
+          p:maxTotal="${redis.maxTotal}"
+          p:testOnBorrow="true"
+    />
+
+    <!-- Redis连接 -->
+    <bean id="jedisConnectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:hostName="${redis.host}"
+          p:port="${redis.port}"
+          p:password="${redis.pass}"
+          p:poolConfig-ref="jedisPoolConfig"/>
+
+    <!-- 缓存序列化方式 -->
+    <bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+    <bean id="valueSerializer" class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/>
+
+    <!-- redis缓存模版 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+          p:connectionFactory-ref="jedisConnectionFactory"
+          p:keySerializer-ref="keySerializer"
+          p:valueSerializer-ref="valueSerializer"
+          p:hashKeySerializer-ref="keySerializer"
+          p:hashValueSerializer-ref="valueSerializer"/>
+    <!-- 由redis实现的cachemanger -->
+    <bean id='redisCacheManager' class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg index="0" ref="redisTemplate"/>
+    </bean>
+</beans>
+
