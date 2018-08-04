@@ -11,4 +11,5 @@ public interface Constans {
     String CACHE_MANAGER = "accountCache";
 
     String REDIS_CACHE_MANAGER = "cacheManagers";
+    String REDIS_CACHE_UID = "uid";
 }

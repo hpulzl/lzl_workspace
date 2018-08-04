@@ -1,5 +1,7 @@
 package hpu.lzl.sort;
 
+import hpu.lzl.use.UseMainSort;
+
 import java.util.Random;
 
 /**
@@ -21,6 +23,7 @@ public class MySort {
                     swap(integers,i,j);
                 }
             }
+            UseMainSort.print("第"+i+"趟排序:",integers);
         }
     }
 

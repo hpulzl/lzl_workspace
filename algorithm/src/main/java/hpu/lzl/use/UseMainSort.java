@@ -22,6 +22,11 @@ public class UseMainSort {
         System.out.println(sb.toString());
     }
 
+    public static void print(String desc,int[] arrs){
+
+        System.out.print(desc);
+        print(arrs);
+    }
     public static void quickSortTest(){
         int[] a = new int[20];
         Random random = new Random();
@@ -87,7 +92,8 @@ public class UseMainSort {
     }
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        quickSortTest();
+//        quickSortTest();
+        bobbleSortTest();
         long end = System.currentTimeMillis();
         System.out.println("sort use time " + (end - start));
 //        bobbleSortTest();

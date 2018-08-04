@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <cache:annotation-driven cache-manager="cacheManager" key-generator="keyGenerator"/>
+    <!-- dummy cacheManager  -->
+   <!-- <bean id="cacheManager" class="org.springframework.cache.support.CompositeCacheManager" >
+        <property name="cacheManagers">
+            <list>
+                <ref bean="redisCacheManager" />
+            </list>
+        </property>
+        &lt;!&ndash;在没有cache容器的情况下使用缓存机制，系统会抛出异常，
+        所以在不想使用缓存机制时，可以设置fallbackToNoOpCache为true来禁用缓存&ndash;&gt;
+        <property name="fallbackToNoOpCache" value="false" />&lt;!&ndash;设为true则不使用缓存&ndash;&gt;
+    </bean>-->
+    <!--读取配置文件-->
+    <context:property-placeholder location="redis_cluster.properties"/>
+
+    <!--配置文件加载-->
+    <bean id="resourcePropertySource" class="org.springframework.core.io.support.ResourcePropertySource"
+          c:location="redis_cluster.properties"/>
+
+    <!--设置为true表示使用事务-->
+    <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager"
+          c:redisOperations-ref="redisTemplate"
+          p:cacheNames-ref="cacheNames"
+          p:expires-ref="expires"
+          p:transactionAware="true"/>
+
+    <bean id="cacheNames" class="java.util.ArrayList">
+       <constructor-arg>
+           <list>
+               <value>trip:car:cityList</value>
+               <value>trip:car:cityList2</value>
+               <value>trip:car:cityList3</value>
+           </list>
+       </constructor-arg>
+    </bean>
+
+    <bean id="expires" class="java.util.HashMap">
+       <constructor-arg>
+           <map key-type="java.lang.String" value-type="java.lang.Long">
+              <entry key="trip:car:cityList" value="20"/>
+              <entry key="trip:car:cityList2" value="30"/>
+              <entry key="trip:car:cityList3" value="40"/>
+
+           </map>
+       </constructor-arg>
+    </bean>
+    <!--使用redis缓存-->
+    <!-- Jedis线程 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig"
+          p:maxIdle="${redis.maxIdle}"
+          p:minIdle="${redis.minIdle}"
+          p:maxTotal="${redis.maxTotal}"
+          p:maxWaitMillis="${redis.maxWait}"
+          p:testOnBorrow="${redis.testOnBorrow}"/>
+
+    <bean id="clusterConfig" class="org.springframework.data.redis.connection.RedisClusterConfiguration"
+          p:maxRedirects="3"
+          c:propertySource-ref="resourcePropertySource"/>
+
+    <!-- Redis连接 -->
+    <bean id="jedisConnectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          c:clusterConfig-ref="clusterConfig"
+          c:poolConfig-ref="jedisPoolConfig"
+          p:password="${redis.password}"
+    />
+    <bean id="keyGenerator" class="com.hpu.lzl.customer.TripCarKeyGenerator" p:prefixKey="trip:car:"/>
+    <!-- 缓存序列化方式 -->
+    <bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+    <bean id="valueSerializer" class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/>
+
+    <!-- redis缓存模版 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+          p:connectionFactory-ref="jedisConnectionFactory"
+          p:keySerializer-ref="keySerializer"
+          p:valueSerializer-ref="valueSerializer"
+          p:hashKeySerializer-ref="keySerializer"
+          p:hashValueSerializer-ref="valueSerializer"/>
+</beans>
+

@@ -20,13 +20,6 @@ import java.util.Collection;
 @Service
 public class RedisCacheService {
 
-    @Autowired
-    private CacheManager cacheManager;
-
-    public void getCacheManager(){
-        Collection<String> strings = cacheManager.getCacheNames();
-        System.out.println(strings);
-    }
     /**
      * Cacheable
      * value 指定选择的缓存管理器名称，即spring配置文件中设置的accountCache
@@ -34,8 +27,12 @@ public class RedisCacheService {
      * @param uid
      * @return
      */
-    @Cacheable(value = Constans.REDIS_CACHE_MANAGER)
+    @Cacheable(value = "trip:car:cityList")
     public User getUser(String uid){
+        return getFromDB(uid);
+    }
+    @Cacheable(value = "trip:car:cityList2")
+    public User getUser2(String uid){
         return getFromDB(uid);
     }
 
@@ -80,6 +77,6 @@ public class RedisCacheService {
         return updateFromDB(user);
     }
 
-    @CacheEvict(value = Constans.REDIS_CACHE_MANAGER,allEntries = true)
+    @CacheEvict(value ="trip:car:cityList",allEntries = true)
     public void evictAll(){}
 }
